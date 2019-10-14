@@ -1,0 +1,8 @@
+Setup:
+File -> Project Structure -> Modules -> tarkvara-lab2 -> Dependencies -> "+" sign -> Library... -> Select junit and hamcrest libraries found in the project and click "Add Selected"
+
+To run all tests, right click the test folder in project filetree and click "Run 'All Tests' with Coverage".
+A Coverage window should appear on the right side of the editor (if not, go to Analyze -> Show Code Coverage Data -> select desired coverage results if prompted)
+
+NOTE: if the option "Run 'All Tests' with Coverage" is greyed out or you are having errors in the project, check:
+	File -> Settings... -> Plugins -> make sure you have Coverage and JUnit plugins enabled (maybe in your case you have to enable something else aswell)
