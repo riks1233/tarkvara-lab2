@@ -1,0 +1,8 @@
+Functional requirement 1 (tdd_1_n):
+	As a user, I can rename a specified part of file's name for all files within the directory of this program so that I can save time when I want to rename multiple files.
+	
+Functional requirement 2 (tdd_2_n):
+	As a user, when I rename specified parts of file's names I can specify which file extension to target within the directory of this program so that I don't rename files with unwanted extensions.
+	
+Functional requirement 3 (tdd_3_n):
+	As a user, when I rename specified parts of file's names I can select to also rename files in subdirectories of the current directory, so that I don't need to move the program multiple times to different directories. 
