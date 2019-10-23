@@ -68,11 +68,11 @@ public class FileRenamer {
 
     public void renameAllInCurrentAndSubDirectoriesWithExtension
             (String what, String to, String ext) throws IOException {
-        renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, "", ext);
+        renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, ext, "");
     }
 
     private void renameAllInCurrentAndSubDirectoriesWithExtension_helper
-            (String what, String to, String subdirectoryPath, String ext) throws IOException {
+            (String what, String to, String ext, String subdirectoryPath) throws IOException {
         String currentPath = workingDirectoryPath + subdirectoryPath;
         File directory = new File(currentPath);
 
@@ -85,7 +85,7 @@ public class FileRenamer {
                 File renamedFile = new File(currentPath, newFileName);
                 file.renameTo(renamedFile);
             } else if (file.isDirectory()) {
-                renameAllInCurrentAndSubDirectories_helper(what, to, subdirectoryPath + file.getName() + "\\");
+                renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, ext, subdirectoryPath + file.getName() + "\\");
             }
         }
     }

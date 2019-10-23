@@ -101,7 +101,7 @@ public class Main {
         textFieldExtension.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if (! Pattern.matches("\\p{L}", Character.toString(e.getKeyChar())) ) {
+                if (! Pattern.matches("[\\p{L}|0-9]", Character.toString(e.getKeyChar())) ) {
                     e.consume();
                 }
             }
