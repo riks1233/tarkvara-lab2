@@ -1,4 +1,6 @@
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import java.io.File;
 import java.io.FileWriter;
@@ -7,9 +9,22 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class FileRenamerTest {
-    // In tests we suppose that testingDirectory directory exists and run everything in this directory
+    // In tests we create a separate testingDirectory directory and run all tests in this directory
+    // In case anything should go wrong, user files are not affected and leftover junk is contained in that directory
 
     private static String TESTING_DIR_PATH = Paths.get("").toAbsolutePath().toString() + "\\testingDirectory\\";
+
+    @BeforeClass
+    public static void createTestingDirectory(){
+        File testingDirectory = new File(TESTING_DIR_PATH);
+        testingDirectory.mkdir();
+    }
+
+    @AfterClass
+    public static void deleteTestingDirectory(){
+        File testingDirectory = new File(TESTING_DIR_PATH);
+        testingDirectory.delete();
+    }
 
     @Test
     public void testRenameAllInCurrentDirectory() throws IOException {
