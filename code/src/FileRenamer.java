@@ -17,20 +17,24 @@ public class FileRenamer {
         this.workingDirectoryPath = workingDirectoryPath;
     }
 
-    public void renameAllInCurrentDirectory(String what, String to) throws IOException {
+    public int renameAllInCurrentDirectory(String what, String to) throws IOException {
         File directory = new File(workingDirectoryPath);
+        int filesRenamed = 0;
 
         for (File file : directory.listFiles()) {
             if (file.isFile() && file.getName().contains(what)) {
                 String newFileName = file.getName().replaceAll(what, to);
                 File renamedFile = new File(workingDirectoryPath, newFileName);
                 file.renameTo(renamedFile);
+                filesRenamed++;
             }
         }
+        return filesRenamed;
     }
 
-    public void renameAllInCurrentDirectoryWithExtension(String what, String to, String ext) {
+    public int renameAllInCurrentDirectoryWithExtension(String what, String to, String ext) {
         File directory = new File(workingDirectoryPath);
+        int filesRenamed = 0;
 
         for (File file : directory.listFiles()) {
             String fileName = file.getName();
@@ -42,39 +46,45 @@ public class FileRenamer {
                 String newFileName = fileName.replaceAll(what, to) + ext;
                 File renamedFile = new File(workingDirectoryPath, newFileName);
                 file.renameTo(renamedFile);
+                filesRenamed++;
             }
         }
+        return filesRenamed;
     }
 
-    public void renameAllInCurrentAndSubDirectories(String what, String to) throws IOException {
-        renameAllInCurrentAndSubDirectories_helper(what, to, "");
+    public int renameAllInCurrentAndSubDirectories(String what, String to) throws IOException {
+        return renameAllInCurrentAndSubDirectories_helper(what, to, "");
     }
 
-    private void renameAllInCurrentAndSubDirectories_helper
+    private int renameAllInCurrentAndSubDirectories_helper
             (String what, String to, String subdirectoryPath) throws IOException {
         String currentPath = workingDirectoryPath + subdirectoryPath;
         File directory = new File(currentPath);
+        int filesRenamed = 0;
 
         for (File file : directory.listFiles()) {
             if (file.isFile() && file.getName().contains(what)) {
                 String newFileName = file.getName().replaceAll(what, to);
                 File renamedFile = new File(currentPath, newFileName);
                 file.renameTo(renamedFile);
+                filesRenamed++;
             } else if (file.isDirectory()) {
-                renameAllInCurrentAndSubDirectories_helper(what, to, subdirectoryPath + file.getName() + "\\");
+                filesRenamed += renameAllInCurrentAndSubDirectories_helper(what, to, subdirectoryPath + file.getName() + "\\");
             }
         }
+        return filesRenamed;
     }
 
-    public void renameAllInCurrentAndSubDirectoriesWithExtension
+    public int renameAllInCurrentAndSubDirectoriesWithExtension
             (String what, String to, String ext) throws IOException {
-        renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, ext, "");
+        return renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, ext, "");
     }
 
-    private void renameAllInCurrentAndSubDirectoriesWithExtension_helper
+    private int renameAllInCurrentAndSubDirectoriesWithExtension_helper
             (String what, String to, String ext, String subdirectoryPath) throws IOException {
         String currentPath = workingDirectoryPath + subdirectoryPath;
         File directory = new File(currentPath);
+        int filesRenamed = 0;
 
         for (File file : directory.listFiles()) {
             String fileName = file.getName();
@@ -84,9 +94,11 @@ public class FileRenamer {
                 String newFileName = fileName.replaceAll(what, to) + ext;
                 File renamedFile = new File(currentPath, newFileName);
                 file.renameTo(renamedFile);
+                filesRenamed++;
             } else if (file.isDirectory()) {
-                renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, ext, subdirectoryPath + file.getName() + "\\");
+                filesRenamed += renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, ext, subdirectoryPath + file.getName() + "\\");
             }
         }
+        return filesRenamed;
     }
 }

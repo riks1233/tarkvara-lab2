@@ -40,7 +40,7 @@ public class FileRenamerTest {
 
             // Rename
             FileRenamer fileRenamer = new FileRenamer(TESTING_DIR_PATH);
-            fileRenamer.renameAllInCurrentDirectory("testfile", "rambotest");
+            int filesRenamed = fileRenamer.renameAllInCurrentDirectory("testfile", "rambotest");
 
             // Check if renamed file exists
             String renamedTestFileName = "rambotest.txt";
@@ -51,12 +51,18 @@ public class FileRenamerTest {
                 clearTestingDirectory();
                 throw new AssertionError("Renamed file does not exit");
             }
+
             // Record actual last line
             String actualLastFileLine = getLastFileLine(renamedFile);
+
             // Delete the files
             clearTestingDirectory();
+
             // Test actual last line to be the same as the recorded
             Assert.assertEquals(actualLastFileLine, expectedLastFileLine);
+
+            // How many files were renamed
+            Assert.assertEquals(filesRenamed, 1);
         } catch (Exception e1) {
             clearTestingDirectory();
             throw e1;
@@ -68,7 +74,6 @@ public class FileRenamerTest {
         // Create 2 test files with same name but different extensions.
         // Rename equal file name parts with function that is tested, assert and delete everything that was produced
         try {
-
             String testFile1Name = "testfile.txt";
             String testFile2Name = "testfile.mp3";
             File testFile1 = createTestFile(testFile1Name);
@@ -80,7 +85,7 @@ public class FileRenamerTest {
 
             // Rename
             FileRenamer fileRenamer = new FileRenamer(TESTING_DIR_PATH);
-            fileRenamer.renameAllInCurrentDirectoryWithExtension("testfile", "rambotest", ".txt");
+            int filesRenamed = fileRenamer.renameAllInCurrentDirectoryWithExtension("testfile", "rambotest", ".txt");
 
             // Check if renamed file exists
             // Check if old file that had not to be renamed exists
@@ -101,11 +106,16 @@ public class FileRenamerTest {
             // Record actual last line
             String actualLastFile1Line = getLastFileLine(renamedTestFile1);
             String actualLastFile2Line = getLastFileLine(oldTestFile2);
+
             // Delete the files
             clearTestingDirectory();
+
             // Test actual last line to be the same as the recorded
             Assert.assertEquals(actualLastFile1Line, expectedLastFile1Line);
             Assert.assertEquals(actualLastFile2Line, expectedLastFile2Line);
+
+            // How many files were renamed
+            Assert.assertEquals(filesRenamed, 1);
         } catch (Exception e1) {
             clearTestingDirectory();
             throw e1;
@@ -135,7 +145,7 @@ public class FileRenamerTest {
 
             // Rename
             FileRenamer fileRenamer = new FileRenamer(TESTING_DIR_PATH);
-            fileRenamer.renameAllInCurrentAndSubDirectories("testfile", "rambotest");
+            int filesRenamed = fileRenamer.renameAllInCurrentAndSubDirectories("testfile", "rambotest");
 
             // Check if files exist
             String renamedTestFile1Name = "rambotest1.txt";
@@ -154,11 +164,16 @@ public class FileRenamerTest {
             // Record actual last lines
             String actualLastFile1Line = getLastFileLine(renamedTestFile1);
             String actualLastFile2Line = getLastFileLine(renamedTestFile2);
+
             // Delete the files and directory
             clearTestingDirectory();
+
             // Test actual last line to be the same as the recorded
             Assert.assertEquals(actualLastFile1Line, expectedLastFile1Line);
             Assert.assertEquals(actualLastFile2Line, expectedLastFile2Line);
+
+            // How many files were renamed
+            Assert.assertEquals(filesRenamed, 2);
         } catch (Exception e1) {
             clearTestingDirectory();
             throw e1;
