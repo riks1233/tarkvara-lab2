@@ -1,4 +1,4 @@
-package tdd_2_1;
+package tdd_2_2;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,6 +9,7 @@ import java.nio.file.FileSystems;
 import java.util.Scanner;
 
 public class FileRenamerTest {
+    // In tests we suppose no files with such filenames were created in current working directory by user
 
     private static String DIR_PATH = String.valueOf(FileSystems.getDefault().getPath(".").toAbsolutePath());
 
@@ -19,7 +20,7 @@ public class FileRenamerTest {
         File renamedFile = null;
         try {
             // Create a test file
-            // (suppose no file with such filename was created in current working directory by user)
+
             String testFileName = "testfile.txt";
             testFile = createTestFile(testFileName);
 
@@ -59,13 +60,14 @@ public class FileRenamerTest {
 
     @Test
     public void testRenameAllInCurrentDirectoryWithExtension() throws IOException {
+        // Create 2 test files with same name but different extensions.
+        // Rename equal file name parts with function that is tested, assert and delete everything that was produced
         File testFile1 = null;
         File testFile2 = null;
         File newTestFile1 = null;
         File oldTestFile2 = null;
         try {
-            // Create 2 test files with same name but different extensions.
-            // Rename equal file name parts with function that is tested, assert and delete everything that was produced
+
             String testFile1Name = "testfile.txt";
             String testFile2Name = "testfile.mp3";
             testFile1 = createTestFile(testFile1Name);
