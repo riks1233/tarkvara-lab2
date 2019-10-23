@@ -50,13 +50,38 @@ public class FileRenamer {
         renameAllInCurrentAndSubDirectories_helper(what, to, "");
     }
 
-    private void renameAllInCurrentAndSubDirectories_helper(String what, String to, String subdirectoryPath) throws IOException {
+    private void renameAllInCurrentAndSubDirectories_helper
+            (String what, String to, String subdirectoryPath) throws IOException {
         String currentPath = workingDirectoryPath + subdirectoryPath;
         File directory = new File(currentPath);
 
         for (File file : directory.listFiles()) {
             if (file.isFile() && file.getName().contains(what)) {
                 String newFileName = file.getName().replaceAll(what, to);
+                File renamedFile = new File(currentPath, newFileName);
+                file.renameTo(renamedFile);
+            } else if (file.isDirectory()) {
+                renameAllInCurrentAndSubDirectories_helper(what, to, subdirectoryPath + file.getName() + "\\");
+            }
+        }
+    }
+
+    public void renameAllInCurrentAndSubDirectoriesWithExtension
+            (String what, String to, String ext) throws IOException {
+        renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, "", ext);
+    }
+
+    private void renameAllInCurrentAndSubDirectoriesWithExtension_helper
+            (String what, String to, String subdirectoryPath, String ext) throws IOException {
+        String currentPath = workingDirectoryPath + subdirectoryPath;
+        File directory = new File(currentPath);
+
+        for (File file : directory.listFiles()) {
+            String fileName = file.getName();
+            if (file.isFile() && fileName.contains(what) && fileName.endsWith(ext)) {
+                fileName = fileName.substring(0, fileName.length() - ext.length());
+
+                String newFileName = fileName.replaceAll(what, to) + ext;
                 File renamedFile = new File(currentPath, newFileName);
                 file.renameTo(renamedFile);
             } else if (file.isDirectory()) {

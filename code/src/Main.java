@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class Main {
@@ -27,10 +28,10 @@ public class Main {
         JLabel labelTo = new JLabel (" To:");
         JLabel labelExtensionExample = new JLabel ("eg. 'txt', 'pdf' etc.");
         JLabel labelExtensionDot = new JLabel (".");
-        JTextField textFieldTo = new JTextField ();
         JTextField textFieldRename = new JTextField ();
+        JTextField textFieldTo = new JTextField ();
         JTextField textFieldExtension = new JTextField ();
-        JCheckBox checkBoxExtension = new JCheckBox ("Target specific file extension");
+        JCheckBox checkBoxExtension = new JCheckBox ("Target files with extension");
         JCheckBox checkBoxSubdirectories = new JCheckBox ("Affect subdirectories");
         JButton btnRename = new JButton ("Rename");
 
@@ -113,9 +114,33 @@ public class Main {
         });
 
         btnRename.addActionListener(e -> {
+            String what = textFieldRename.getText();
+            String to = textFieldTo.getText();
+            String ext = textFieldExtension.getText();
 
+            if (what.equals("") || to.equals("") || (affectExtension && ext.equals(""))) {
+                System.out.println("Something is empty");
+                return;
+            }
+
+            ext = "." + ext;
+
+            try {
+                if (affectExtension && affectSubdirectories) {
+                    fileRenamer.renameAllInCurrentAndSubDirectoriesWithExtension(what, to, ext);
+                } else if (!affectExtension && affectSubdirectories) {
+                    fileRenamer.renameAllInCurrentAndSubDirectories(what, to);
+                } else if (affectExtension && !affectSubdirectories) {
+                    fileRenamer.renameAllInCurrentDirectoryWithExtension(what, to, ext);
+                } else {
+                    fileRenamer.renameAllInCurrentDirectory(what, to);
+                }
+
+            } catch (IOException e1) {
+                e1.getMessage();
+            }
         });
-        
+
         // Show frame
         frame.pack();
         frame.setResizable(false);
