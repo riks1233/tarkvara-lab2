@@ -1,28 +1,36 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.util.regex.Pattern;
 
 public class Main {
 
+    private static FileRenamer fileRenamer;
+    private static boolean affectExtension;
+    private static boolean affectSubdirectories;
+
     public static void main(String[] args) {
-        createGUI();
+        fileRenamer = new FileRenamer();
+        createApplication();
     }
 
-    private static void createGUI() {
+    private static void createApplication() {
         // Initialize frame and main panel
         JFrame frame = new JFrame ("File Renamer");
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         JPanel mainPanel = new JPanel();
-
         // Construct components
         JTextArea textDescriptionContainer = new JTextArea();
         JTextArea textDescription = new JTextArea (
-                "Description: Rename parts of all file names in current working directory. Name part specified in the field \"rename\" will be replaced with text specified in the field \"to\".");
+                "Description: Rename parts of all file names in current working directory. Name part specified in the field \"Rename\" will be replaced with text specified in the field \"To\".");
         JLabel labelRename = new JLabel ("Rename:");
         JLabel labelTo = new JLabel (" To:");
+        JLabel labelExtensionExample = new JLabel ("eg. 'txt', 'pdf' etc.");
+        JLabel labelExtensionDot = new JLabel (".");
         JTextField textFieldTo = new JTextField ();
         JTextField textFieldRename = new JTextField ();
         JTextField textFieldExtension = new JTextField ();
-        JCheckBox checkBoxTargetExtension = new JCheckBox ("Target specific file extension");
+        JCheckBox checkBoxExtension = new JCheckBox ("Target specific file extension");
         JCheckBox checkBoxSubdirectories = new JCheckBox ("Affect subdirectories");
         JButton btnRename = new JButton ("Rename");
 
@@ -44,10 +52,12 @@ public class Main {
         mainPanel.add(textDescriptionContainer);
         mainPanel.add(labelRename);
         mainPanel.add(labelTo);
+        mainPanel.add(labelExtensionExample);
+        mainPanel.add(labelExtensionDot);
         mainPanel.add(textFieldRename);
         mainPanel.add(textFieldTo);
         mainPanel.add(textFieldExtension);
-        mainPanel.add(checkBoxTargetExtension);
+        mainPanel.add(checkBoxExtension);
         mainPanel.add(checkBoxSubdirectories);
         mainPanel.add(btnRename);
 
@@ -59,13 +69,53 @@ public class Main {
         textDescription.setBounds (10, 10, 355, 50);
         labelRename.setBounds (45, 100, 60, 25);
         labelTo.setBounds (75, 135, 30, 25);
+        labelExtensionExample.setBounds (250, 175, 100, 25);
+        labelExtensionDot.setBounds (250, 205, 100, 25);
         textFieldRename.setBounds (110, 100, 230, 25);
         textFieldTo.setBounds (110, 135, 230, 25);
-        textFieldExtension.setBounds (250, 200, 90, 25);
-        checkBoxTargetExtension.setBounds (55, 200, 190, 25);
+        textFieldExtension.setBounds (255, 200, 85, 25);
+        checkBoxExtension.setBounds (55, 200, 190, 25);
         checkBoxSubdirectories.setBounds (55, 235, 165, 25);
         btnRename.setBounds (95, 315, 190, 45);
 
+        // Add component listeners
+        checkBoxSubdirectories.addItemListener(e -> {
+            if (checkBoxSubdirectories.isSelected()) {
+                affectSubdirectories = true;
+            } else {
+                affectSubdirectories = false;
+            }
+        });
+
+        checkBoxExtension.addItemListener(e -> {
+            if (checkBoxExtension.isSelected()) {
+                textFieldExtension.setEnabled(true);
+                affectExtension = true;
+            } else {
+                textFieldExtension.setEnabled(false);
+                affectExtension = false;
+            }
+        });
+
+        textFieldExtension.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (! Pattern.matches("\\p{L}", Character.toString(e.getKeyChar())) ) {
+                    e.consume();
+                }
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+
+        btnRename.addActionListener(e -> {
+
+        });
+        
         // Show frame
         frame.pack();
         frame.setResizable(false);
