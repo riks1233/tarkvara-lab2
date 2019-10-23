@@ -46,6 +46,7 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tdd_3_2" />
       <recent name="tdd_3_1" />
       <recent name="tdd_2_2" />
       <recent name="tdd_2_1" />
@@ -67,89 +68,93 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FileRenamerTest (4)">
-    <configuration name="FileRenamerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FileRenamerTest (5)">
+    <configuration name="FileRenamerTest (5)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tarkvara-lab2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tdd_1_2.*" />
+          <option name="PATTERN" value="tdd_3_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tdd_1_2" />
-      <option name="MAIN_CLASS_NAME" value="tdd_1_2.FileRenamerTest" />
+      <option name="PACKAGE_NAME" value="tdd_3_2" />
+      <option name="MAIN_CLASS_NAME" value="tdd_3_2.FileRenamerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileRenamerTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileRenamerTest.testRenameAllInCurrentAndSubDirectories" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tarkvara-lab2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tdd_2_1.*" />
+          <option name="PATTERN" value="tdd_3_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tdd_2_1" />
-      <option name="MAIN_CLASS_NAME" value="tdd_2_1.FileRenamerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="tdd_3_2" />
+      <option name="MAIN_CLASS_NAME" value="tdd_3_2.FileRenamerTest" />
+      <option name="METHOD_NAME" value="testRenameAllInCurrentAndSubDirectories" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileRenamerTest (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileRenamerTest.testRenameAllInCurrentDirectory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tarkvara-lab2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tdd_2_2.*" />
+          <option name="PATTERN" value="tdd_3_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tdd_2_2" />
-      <option name="MAIN_CLASS_NAME" value="tdd_2_2.FileRenamerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="tdd_3_2" />
+      <option name="MAIN_CLASS_NAME" value="tdd_3_2.FileRenamerTest" />
+      <option name="METHOD_NAME" value="testRenameAllInCurrentDirectory" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileRenamerTest (4)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileRenamerTest.testRenameAllInCurrentDirectoryWithExtension" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tarkvara-lab2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tdd_3_1.*" />
+          <option name="PATTERN" value="tdd_3_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tdd_3_1" />
-      <option name="MAIN_CLASS_NAME" value="tdd_3_1.FileRenamerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="tdd_3_2" />
+      <option name="MAIN_CLASS_NAME" value="tdd_3_2.FileRenamerTest" />
+      <option name="METHOD_NAME" value="testRenameAllInCurrentDirectoryWithExtension" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileRenamerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileRenamerTest.testforpath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tarkvara-lab2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tdd_1_1.*" />
+          <option name="PATTERN" value="tdd_3_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tdd_1_1" />
-      <option name="MAIN_CLASS_NAME" value="tdd_1_1.FileRenamerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="tdd_3_2" />
+      <option name="MAIN_CLASS_NAME" value="tdd_3_2.FileRenamerTest" />
+      <option name="METHOD_NAME" value="testforpath" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FileRenamerTest (4)" />
-        <item itemvalue="JUnit.FileRenamerTest (3)" />
-        <item itemvalue="JUnit.FileRenamerTest (2)" />
-        <item itemvalue="JUnit.FileRenamerTest (1)" />
-        <item itemvalue="JUnit.FileRenamerTest" />
+        <item itemvalue="JUnit.FileRenamerTest (5)" />
+        <item itemvalue="JUnit.FileRenamerTest.testRenameAllInCurrentAndSubDirectories" />
+        <item itemvalue="JUnit.FileRenamerTest.testRenameAllInCurrentDirectory" />
+        <item itemvalue="JUnit.FileRenamerTest.testRenameAllInCurrentDirectoryWithExtension" />
+        <item itemvalue="JUnit.FileRenamerTest.testforpath" />
       </list>
     </recent_temporary>
   </component>
