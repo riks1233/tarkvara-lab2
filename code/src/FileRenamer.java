@@ -5,13 +5,13 @@ import java.nio.file.Paths;
 public class FileRenamer {
 
     public static String DIR_PATH = Paths.get("").toAbsolutePath().toString() + "\\";
-
     public String workingDirectoryPath;
 
     // Default initialization
     FileRenamer() {
         workingDirectoryPath = DIR_PATH;
     }
+
     // Functionality for tests
     FileRenamer(String workingDirectoryPath){
         this.workingDirectoryPath = workingDirectoryPath;
