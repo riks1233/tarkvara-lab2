@@ -20,11 +20,11 @@ public class FileRenamerTest {
         testingDirectory.mkdir();
     }
 
-    @AfterClass
-    public static void deleteTestingDirectory(){
-        File testingDirectory = new File(TESTING_DIR_PATH);
-        testingDirectory.delete();
-    }
+//    @AfterClass
+//    public static void deleteTestingDirectory(){
+//        File testingDirectory = new File(TESTING_DIR_PATH);
+//        testingDirectory.delete();
+//    }
 
     @Test
     public void testRenameAllInCurrentDirectory() throws IOException {
@@ -269,9 +269,9 @@ public class FileRenamerTest {
         Assert.assertEquals(Paths.get("").toAbsolutePath().toString() + "\\", fileRenamerBlank.workingDirectoryPath);
         FileRenamer fileRenamerSetup = new FileRenamer(TESTING_DIR_PATH);
         Assert.assertNotEquals(Paths.get("").toAbsolutePath().toString() + "\\", fileRenamerSetup.workingDirectoryPath);
-
     }
 
+    // Help functions for tests
     private String getLastFileLine(File file) throws IOException{
         Scanner sc = new Scanner(file);
         String lastFileLine = "";

@@ -128,8 +128,8 @@ public class Main {
                 String to = textFieldTo.getText();
                 String ext = textFieldExtension.getText();
 
-                if (what.equals("") || to.equals("") || (targetExtension && ext.equals(""))) {
-                    throw new Exception("A field was left empty");
+                if (what.equals("") || (targetExtension && ext.equals(""))) {
+                    throw new Exception("A required field was left empty");
                 }
 
                 ext = "." + ext;

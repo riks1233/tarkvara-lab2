@@ -18,6 +18,7 @@ public class FileRenamer {
     }
 
     public int renameAllInCurrentDirectory(String what, String to) throws IOException {
+        if (what.equals("")) throw new IOException("A required parameter was an empty string");
         File directory = new File(workingDirectoryPath);
         int filesRenamed = 0;
 
@@ -32,7 +33,8 @@ public class FileRenamer {
         return filesRenamed;
     }
 
-    public int renameAllInCurrentDirectoryWithExtension(String what, String to, String ext) {
+    public int renameAllInCurrentDirectoryWithExtension(String what, String to, String ext) throws IOException {
+        if (what.equals("") || ext.equals("")) throw new IOException("A required parameter was an empty string");
         File directory = new File(workingDirectoryPath);
         int filesRenamed = 0;
 
@@ -53,6 +55,7 @@ public class FileRenamer {
     }
 
     public int renameAllInCurrentAndSubDirectories(String what, String to) throws IOException {
+        if (what.equals("")) throw new IOException("A required parameter was an empty string");
         return renameAllInCurrentAndSubDirectories_helper(what, to, "");
     }
 
@@ -77,6 +80,7 @@ public class FileRenamer {
 
     public int renameAllInCurrentAndSubDirectoriesWithExtension
             (String what, String to, String ext) throws IOException {
+        if (what.equals("") || ext.equals("")) throw new IOException("A required parameter was an empty string");
         return renameAllInCurrentAndSubDirectoriesWithExtension_helper(what, to, ext, "");
     }
 
