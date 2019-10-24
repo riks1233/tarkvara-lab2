@@ -20,11 +20,11 @@ public class FileRenamerTest {
         testingDirectory.mkdir();
     }
 
-//    @AfterClass
-//    public static void deleteTestingDirectory(){
-//        File testingDirectory = new File(TESTING_DIR_PATH);
-//        testingDirectory.delete();
-//    }
+    @AfterClass
+    public static void deleteTestingDirectory(){
+        File testingDirectory = new File(TESTING_DIR_PATH);
+        testingDirectory.delete();
+    }
 
     @Test
     public void testRenameAllInCurrentDirectory() throws IOException {
