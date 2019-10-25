@@ -1,6 +1,9 @@
 # File Renamer
 **Tarkvara protsessid ja kvaliteet (ITB8826) Lab 2**
 
+## Preview
+![alt text](https://i.ibb.co/c2bnTY0/filerenamer-preview.png)
+
 ## Information
 File Renamer is a little Java program with GUI capable of renaming parts of file names. It allows to rename files not only in current working directory, but also target specific file extensions as well as affect subfolders of current working directory.
 
